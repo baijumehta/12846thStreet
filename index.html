@@ -261,7 +261,7 @@ footer p+p{margin-top:.4rem}
 <section id="prep">
   <div class="shead"><h2>Before you arrive</h2><span class="n" id="prep-n">&mdash;</span></div>
   <p class="lede">Every item here is something that, if missed, stops a whole day of work on the day it is discovered. Find your name and confirm it in advance, not the morning of.</p>
-  <ul class="prep" id="prep"></ul>
+  <ul class="prep" id="preplist"></ul>
 </section>
 
 <section id="watch">
@@ -501,7 +501,7 @@ footer p+p{margin-top:.4rem}
   }
 
   function drawPrep(){
-    $("#prep").innerHTML = PREP.map(function(p){
+    $("#preplist").innerHTML = PREP.map(function(p){
       var on = !!state.prep[p.id];
       return '<li class="' + (on ? "on" : "") + '" data-id="' + p.id + '">'
         + '<button class="box" type="button" aria-pressed="' + on + '" aria-label="Mark confirmed"></button>'
@@ -552,7 +552,7 @@ footer p+p{margin-top:.4rem}
     drawTimeline(); drawStrip(); syncBar();
   });
 
-  $("#prep").addEventListener("click", function(ev){
+  $("#preplist").addEventListener("click", function(ev){
     var b = ev.target.closest(".box");
     if (!b || !editing) return;
     var id = b.closest("li").dataset.id;
