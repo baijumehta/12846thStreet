@@ -1,0 +1,623 @@
+<title>46th Street Balcony Rebuild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root{
+  --ink:#101d24; --ink-2:#3f5460; --ink-3:#6b8290;
+  --ground:#eef1ee; --surface:#fafbf9; --surface-2:#e6eae6;
+  --accent:#0a6a70; --accent-soft:#dcebe9;
+  --rule:#cdd6d1; --rule-2:#b7c3bd;
+  --done:#2c7a45; --done-soft:#dcecdf;
+  --active:#a35a10; --active-soft:#f6e8d6;
+  --gate:#a8332a; --gate-soft:#f6e2df;
+  --shadow:0 1px 2px rgba(16,29,36,.07),0 4px 14px rgba(16,29,36,.05);
+  --f-disp:"Barlow Condensed",Haettenschweiler,"Arial Narrow",sans-serif;
+  --f-body:"Source Sans 3",system-ui,-apple-system,Segoe UI,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#e4ebe7; --ink-2:#a3b5bd; --ink-3:#7b8f99;
+    --ground:#0d1417; --surface:#161f23; --surface-2:#1e2a2f;
+    --accent:#54b6ae; --accent-soft:#16302f;
+    --rule:#28353a; --rule-2:#374850;
+    --done:#63c283; --done-soft:#16301f;
+    --active:#e0a251; --active-soft:#332415;
+    --gate:#e5776a; --gate-soft:#341a17;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e4ebe7; --ink-2:#a3b5bd; --ink-3:#7b8f99;
+  --ground:#0d1417; --surface:#161f23; --surface-2:#1e2a2f;
+  --accent:#54b6ae; --accent-soft:#16302f;
+  --rule:#28353a; --rule-2:#374850;
+  --done:#63c283; --done-soft:#16301f;
+  --active:#e0a251; --active-soft:#332415;
+  --gate:#e5776a; --gate-soft:#341a17;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.1rem 5rem}
+h1,h2,h3{margin:0;font-family:var(--f-disp);font-weight:700;text-wrap:balance;line-height:1.08}
+p{margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:3px}
+.eyebrow{font-family:var(--f-disp);font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+.mast{padding:2.1rem 0 1.4rem;border-bottom:2px solid var(--ink)}
+.mast h1{font-size:clamp(2.2rem,9vw,3.3rem);letter-spacing:-.005em;margin:.15rem 0 .5rem}
+.mast .addr{font-family:var(--f-mono);font-size:.92rem;color:var(--ink-2);display:inline-block}
+.mast .blurb{margin-top:.85rem;color:var(--ink-2);max-width:34rem;font-size:1.02rem}
+.jump{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.15rem}
+.jump a{font-family:var(--f-disp);font-weight:600;font-size:.83rem;letter-spacing:.09em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--rule);
+  padding:.36rem .62rem;border-radius:2px}
+.jump a:hover{color:var(--accent);border-color:var(--accent)}
+
+section{padding-top:2.6rem}
+.shead{display:flex;align-items:baseline;gap:.7rem;border-bottom:1px solid var(--rule);padding-bottom:.4rem;margin-bottom:1.15rem}
+.shead h2{font-size:1.62rem;letter-spacing:.005em}
+.shead .n{font-family:var(--f-mono);font-size:.8rem;color:var(--ink-3);margin-left:auto;white-space:nowrap}
+.lede{color:var(--ink-2);margin-bottom:1.15rem;font-size:.97rem}
+
+.strip{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:1.4rem;border-radius:3px;overflow:hidden}
+@media(min-width:34rem){.strip{grid-template-columns:repeat(3,1fr)}}
+.strip div{background:var(--surface);padding:.8rem .9rem}
+.strip .k{font-family:var(--f-disp);font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.strip .v{font-family:var(--f-disp);font-weight:600;font-size:1.28rem;line-height:1.2;margin-top:.1rem}
+.strip .s{font-size:.85rem;color:var(--ink-2);margin-top:.1rem}
+
+.tl{position:relative;padding-left:1.75rem}
+.tl::before{content:"";position:absolute;left:.4rem;top:.55rem;bottom:2.2rem;width:2px;background:var(--rule-2)}
+.node{position:relative;margin-bottom:.85rem}
+.node::before{content:"";position:absolute;left:-1.53rem;top:.72rem;width:.72rem;height:.72rem;border-radius:50%;
+  background:var(--surface);border:2px solid var(--rule-2);z-index:1}
+.node[data-st="done"]::before{background:var(--done);border-color:var(--done)}
+.node[data-st="active"]::before{background:var(--active);border-color:var(--active);box-shadow:0 0 0 4px var(--active-soft)}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:3px;padding:.85rem .95rem;box-shadow:var(--shadow)}
+.node[data-st="done"] .card{background:var(--done-soft);border-color:var(--done)}
+.node[data-st="active"] .card{border-color:var(--active);border-left-width:4px}
+.when{font-family:var(--f-mono);font-size:.79rem;font-weight:500;letter-spacing:.01em;color:var(--ink-3);text-transform:uppercase}
+.node[data-st="active"] .when{color:var(--active)}
+.node h3{font-size:1.2rem;margin:.16rem 0 .3rem}
+.card p{font-size:.93rem;color:var(--ink-2)}
+.owners{display:flex;flex-wrap:wrap;gap:.32rem;margin:.5rem 0 .05rem}
+.who{font-family:var(--f-disp);font-weight:600;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;
+  background:var(--accent-soft);color:var(--accent);padding:.2rem .48rem;border-radius:2px;
+  border:1px solid var(--accent);text-decoration:none;white-space:nowrap}
+
+.node.par{margin-left:.9rem}
+.node.par::before{left:-2.43rem;background:var(--surface);border-style:dashed}
+.node.par .card{border-style:dashed}
+.par-tag{position:absolute;left:-2.1rem;top:1.4rem;bottom:0;width:1.5rem;border-left:2px dashed var(--rule-2)}
+.offpath{font-family:var(--f-disp);font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);
+  border:1px dashed var(--rule-2);padding:.12rem .4rem;border-radius:2px;display:inline-block;margin-bottom:.35rem}
+
+.node.gate::before{background:var(--gate);border-color:var(--gate);border-radius:2px;transform:rotate(45deg);width:.66rem;height:.66rem;left:-1.5rem}
+.node.gate .card{background:var(--gate-soft);border:2px dashed var(--gate);box-shadow:none}
+.node.gate .when{color:var(--gate)}
+.stamp{font-family:var(--f-disp);font-weight:700;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gate);border:1.5px solid var(--gate);padding:.14rem .45rem;border-radius:2px;display:inline-block;margin-bottom:.35rem}
+.node.gate h3{color:var(--gate)}
+.node.gate[data-st="done"] .card{background:var(--done-soft);border-style:solid;border-color:var(--done)}
+.node.gate[data-st="done"] h3,.node.gate[data-st="done"] .when{color:var(--done)}
+.node.gate[data-st="done"] .stamp{color:var(--done);border-color:var(--done)}
+
+.flag{display:block;margin-top:.55rem;font-size:.87rem;font-weight:600;color:var(--gate);
+  border-left:3px solid var(--gate);padding-left:.55rem}
+
+.seg{display:none;margin-top:.65rem;border:1px solid var(--rule-2);border-radius:3px;overflow:hidden;width:fit-content}
+body.editing .seg{display:flex}
+.seg button{font-family:var(--f-disp);font-weight:600;font-size:.79rem;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--surface);color:var(--ink-2);border:0;border-right:1px solid var(--rule-2);
+  padding:.42rem .66rem;cursor:pointer;min-height:34px}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+
+.people{display:grid;gap:.7rem}
+@media(min-width:38rem){.people{grid-template-columns:1fr 1fr}}
+.person{background:var(--surface);border:1px solid var(--rule);border-top:3px solid var(--accent);border-radius:3px;
+  padding:.85rem .95rem;display:flex;flex-direction:column;gap:.4rem;box-shadow:var(--shadow)}
+.person.pm{border-top-color:var(--ink-3)}
+.person .nm{font-family:var(--f-disp);font-weight:700;font-size:1.32rem;line-height:1.1}
+.person .role{font-family:var(--f-disp);font-size:.79rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:-.28rem}
+.person ul{margin:.1rem 0 0;padding-left:1.05rem;font-size:.92rem;color:var(--ink-2)}
+.person li{margin-bottom:.18rem}
+.person li::marker{color:var(--accent)}
+.tel{margin-top:auto;font-family:var(--f-mono);font-size:1.02rem;font-weight:500;text-decoration:none;color:var(--ink);
+  background:var(--surface-2);border:1px solid var(--rule);border-radius:3px;padding:.5rem .65rem;
+  display:flex;align-items:center;gap:.5rem;min-height:44px}
+.tel:hover{border-color:var(--accent);color:var(--accent)}
+.tel span{font-family:var(--f-disp);font-size:.76rem;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);margin-left:auto}
+
+.permit{background:var(--surface);border:2px solid var(--gate);border-radius:3px;padding:1rem 1.05rem;display:grid;gap:.75rem}
+.permit .row{display:flex;flex-wrap:wrap;gap:.2rem .8rem;align-items:baseline;border-bottom:1px dotted var(--rule-2);padding-bottom:.55rem}
+.permit .row:last-of-type{border-bottom:0;padding-bottom:0}
+.permit .rk{font-family:var(--f-disp);font-size:.79rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);flex:0 0 100%}
+@media(min-width:30rem){.permit .rk{flex:0 0 9.5rem}}
+.permit .rv{font-size:.96rem;flex:1;min-width:0}
+.actions{display:grid;gap:.5rem}
+@media(min-width:30rem){.actions{grid-template-columns:1fr 1fr}}
+.callbtn{font-family:var(--f-mono);font-size:1rem;font-weight:600;text-decoration:none;color:#fff;background:var(--gate);
+  border:2px solid var(--gate);border-radius:3px;padding:.6rem .75rem;display:flex;align-items:center;gap:.5rem;min-height:46px}
+.callbtn.alt{background:transparent;color:var(--gate)}
+.callbtn b{font-family:var(--f-disp);font-weight:600;font-size:.78rem;letter-spacing:.11em;text-transform:uppercase;opacity:.85;white-space:nowrap}
+
+.prep{list-style:none;margin:0;padding:0;border:1px solid var(--rule);border-radius:3px;background:var(--surface);overflow:hidden}
+.prep li{display:flex;gap:.7rem;padding:.72rem .85rem;border-bottom:1px solid var(--rule);align-items:flex-start}
+.prep li:last-child{border-bottom:0}
+.prep li.on{background:var(--done-soft)}
+.box{flex:0 0 auto;width:1.15rem;height:1.15rem;margin-top:.16rem;border:2px solid var(--rule-2);border-radius:2px;
+  background:transparent;padding:0;position:relative}
+body.editing .box{cursor:pointer}
+.prep li.on .box{background:var(--done);border-color:var(--done)}
+.prep li.on .box::after{content:"";position:absolute;left:.29rem;top:.06rem;width:.28rem;height:.58rem;
+  border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(43deg)}
+.prep .txt{flex:1;min-width:0;font-size:.94rem}
+.prep .txt b{font-weight:600}
+.prep li.on .txt{color:var(--ink-2)}
+.tag{font-family:var(--f-disp);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);border:1px solid var(--rule-2);padding:.06rem .34rem;border-radius:2px;margin-left:.35rem;white-space:nowrap}
+
+.watch{display:grid;gap:.75rem;counter-reset:w}
+.risk{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--active);border-radius:3px;padding:.85rem .95rem}
+.risk.hot{border-left-color:var(--gate)}
+.risk h3{font-size:1.1rem;display:flex;gap:.55rem;align-items:baseline}
+.risk h3::before{counter-increment:w;content:counter(w,decimal-leading-zero);font-family:var(--f-mono);font-size:.86rem;color:var(--ink-3);font-weight:400}
+.risk p{font-size:.93rem;color:var(--ink-2);margin-top:.3rem}
+.risk .fix{display:block;margin-top:.45rem;font-size:.92rem;color:var(--ink)}
+.risk .fix b{font-family:var(--f-disp);font-size:.77rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block}
+
+.log{border:1px solid var(--rule);border-radius:3px;background:var(--surface);overflow:hidden}
+.entry{padding:.75rem .9rem;border-bottom:1px solid var(--rule);display:flex;gap:.8rem;align-items:flex-start}
+.entry:last-child{border-bottom:0}
+.entry .d{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-3);flex:0 0 4.4rem;padding-top:.14rem}
+.entry .t{flex:1;min-width:0;font-size:.95rem}
+.composer{display:none;margin-top:.8rem;gap:.55rem;flex-direction:column}
+body.editing .composer{display:flex}
+.composer textarea{font-family:var(--f-body);font-size:1rem;color:var(--ink);background:var(--surface);
+  border:1px solid var(--rule-2);border-radius:3px;padding:.65rem .75rem;min-height:5rem;resize:vertical;width:100%}
+.composer textarea::placeholder{color:var(--ink-3)}
+
+.btn{font-family:var(--f-disp);font-weight:600;font-size:.88rem;letter-spacing:.11em;text-transform:uppercase;
+  background:var(--ink);color:var(--ground);border:1px solid var(--ink);border-radius:3px;
+  padding:.6rem 1rem;cursor:pointer;min-height:42px;align-self:flex-start}
+.btn.ghost{background:transparent;color:var(--ink-2);border-color:var(--rule-2)}
+.btn.ghost:hover{color:var(--accent);border-color:var(--accent)}
+.btn[disabled]{opacity:.45;cursor:default}
+.modebar{display:flex;flex-wrap:wrap;gap:.55rem;align-items:center;margin-top:1.2rem}
+.modenote{font-size:.87rem;color:var(--ink-3)}
+.savebar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--ink);color:var(--ground);
+  padding:.7rem 1.1rem;display:none;align-items:center;gap:.8rem;flex-wrap:wrap;box-shadow:0 -4px 20px rgba(0,0,0,.22)}
+.savebar.show{display:flex}
+.savebar .msg{font-size:.92rem;flex:1;min-width:10rem}
+.savebar .btn{background:var(--ground);color:var(--ink);border-color:var(--ground)}
+.savebar .btn.ghost{background:transparent;color:var(--ground);border-color:var(--ink-3)}
+
+footer{margin-top:3rem;padding-top:1.1rem;border-top:1px solid var(--rule);font-size:.87rem;color:var(--ink-3)}
+footer p+p{margin-top:.4rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <span class="eyebrow">Job schedule &amp; contacts</span>
+  <h1>46th Street Balcony Rebuild</h1>
+  <a class="addr" href="https://maps.google.com/?q=128+46th+Street,+Newport+Beach,+CA">128 46th Street, Newport Beach, CA &nearr;</a>
+  <p class="blurb">Balcony waterproofing tear-out and rebuild, new sliding doors, new balcony tile, and a replacement staircase to the upper unit. Four trades, eleven days, one permit. This page is the single schedule everyone works from, and it gets updated as work is signed off.</p>
+  <nav class="jump">
+    <a href="#schedule">Schedule</a>
+    <a href="#crew">Who does what</a>
+    <a href="#permit">Permit &amp; inspections</a>
+    <a href="#prep">Before you arrive</a>
+    <a href="#watch">Watch list</a>
+    <a href="#log">Progress log</a>
+  </nav>
+  <div class="strip">
+    <div><div class="k">Work window</div><div class="v">Sep 11 &ndash; Sep 21</div><div class="s">2026 &middot; 7 working days</div></div>
+    <div><div class="k">Up next</div><div class="v" id="s-next">&mdash;</div><div class="s" id="s-next-sub">&mdash;</div></div>
+    <div><div class="k">Progress</div><div class="v" id="s-prog">&mdash;</div><div class="s" id="s-prog-sub">&mdash;</div></div>
+  </div>
+  <div class="modebar">
+    <button class="btn ghost" id="modebtn" type="button">Owner: update progress</button>
+    <span class="modenote" id="modenote">Everyone else: read-only. Check back for the latest.</span>
+  </div>
+</header>
+
+<section id="schedule">
+  <div class="shead"><h2>Schedule</h2><span class="n">Fri Sep 11 &rarr; Mon Sep 21, 2026</span></div>
+  <p class="lede">The solid line is the critical path &mdash; every item on it blocks the one below. The staircase sits off the line on its own dashed track: it can move without touching the balcony. Red diamonds are inspection holds, and work does not get covered until the one above it is signed off.</p>
+  <div class="tl" id="timeline"></div>
+</section>
+
+<section id="crew">
+  <div class="shead"><h2>Who does what</h2><span class="n">6 people</span></div>
+  <p class="lede">Tap a number to call. If your scope touches somebody else&rsquo;s on the same day, call them directly &mdash; don&rsquo;t route it through Baiju and lose half a day.</p>
+  <div class="people" id="people"></div>
+</section>
+
+<section id="permit">
+  <div class="shead"><h2>Permit &amp; inspections</h2><span class="n">City of Newport Beach</span></div>
+  <p class="lede">The permit office asked to see the work before it gets closed up. Three inspections, all booked online by Baiju &mdash; nobody else schedules them, and nobody covers inspected work until it is signed off.</p>
+  <div class="permit">
+    <div class="actions">
+      <a class="callbtn" href="https://css.newportbeachca.gov/EnerGov_Prod/SelfService#/permit/cc1eb40c-f64c-4108-82e9-659b138c26b1"><b>Permit record &nearr;</b></a>
+      <a class="callbtn alt" href="tel:+19496443255"><b>Building div</b> (949) 644-3255</a>
+    </div>
+    <div class="row"><div class="rk">Scheduling</div><div class="rv"><b>Booked online through the city&rsquo;s self-service portal by Baiju.</b> The phone number is a fallback for questions, not the booking method.</div></div>
+    <div class="row"><div class="rk">Notice required</div><div class="rv">One to two business days. <b>There are no weekend inspections</b> &mdash; which is why Sat Sep 19 and Sun Sep 20 are stair-only days, and why a Friday finish can&rsquo;t be inspected until Monday.</div></div>
+    <div class="row"><div class="rk">On site always</div><div class="rv">Permit card posted and the approved plans accessible. An inspector who can&rsquo;t find the card can fail the trip, and that costs a day this schedule doesn&rsquo;t have.</div></div>
+    <div class="row"><div class="rk">Inspection 1</div><div class="rv"><b>After the waterproofing demo.</b> Substrate open and swept, drain and scupper visible, nothing re-covered.</div></div>
+    <div class="row"><div class="rk">Inspection 2</div><div class="rv"><b>After waterproofing is complete.</b> Membrane fully down, turn-ups at the walls and the door pan visible, before any tile or setting bed goes over it. This is the one that cannot be skipped &mdash; once tile is down it can only be verified by tearing it out.</div></div>
+    <div class="row"><div class="rk">Inspection 3</div><div class="rv"><b>Final, after tile.</b> Sign-off that closes out the permit.</div></div>
+  </div>
+</section>
+
+<section id="prep">
+  <div class="shead"><h2>Before you arrive</h2><span class="n" id="prep-n">&mdash;</span></div>
+  <p class="lede">Every item here is something that, if missed, stops a whole day of work on the day it is discovered. Find your name and confirm it in advance, not the morning of.</p>
+  <ul class="prep" id="prep"></ul>
+</section>
+
+<section id="watch">
+  <div class="shead"><h2>Watch list</h2><span class="n">Owner&rsquo;s notes</span></div>
+  <p class="lede">Where this schedule is most likely to break, in order. There is no float between Sep 11 and Sep 21 &mdash; a single lost day pushes tile past the 21st.</p>
+  <div class="watch">
+
+    <div class="risk hot">
+      <h3>Inspection 1 lands on the busiest day of the job</h3>
+      <p>Demo finishes Friday Sep 11. The city wants one to two business days&rsquo; notice and does not inspect weekends, so the earliest realistic slot is Monday Sep 14 &mdash; the same day Gerardo builds the door sill and Urias hangs the doors. Three things compete for one morning, and if the sill goes in before the inspector sees the open substrate, that inspection is compromised.</p>
+      <span class="fix"><b>Do this</b>Ask Gerardo to demo Thursday Sep 10 instead of Friday. That puts the inspection on Friday Sep 11, leaves the weekend as buffer, and hands Monday back to the sill-and-doors work with nothing else on it. If the demo can&rsquo;t move, book the inspection Wednesday Sep 9 for a Friday slot, and Gerardo does not touch the sill Monday until the inspector has cleared it.</span>
+    </div>
+
+    <div class="risk hot">
+      <h3>Sep 14 is two trades and a hard handoff in one day</h3>
+      <p>Gerardo sets the sill and pan flashing, and Urias has to install into it the same day. If the sill isn&rsquo;t set and firm by the time Urias arrives, or if the pan detail doesn&rsquo;t match what the door needs, the doors go back on the truck and the waterproofing behind them stalls too.</p>
+      <span class="fix"><b>Do this</b>Get Gerardo and Urias on the phone with each other before Sep 11, not through you. They need to agree on finished sill height, the pan flashing detail and how the membrane laps into it, who supplies what, and arrival times. Gerardo starts at first light; Urias arrives midday, not at 8am.</span>
+    </div>
+
+    <div class="risk hot">
+      <h3>Inspection 2 has exactly one slot before tile</h3>
+      <p>Waterproofing wraps Wednesday or Thursday Sep 16&ndash;17. The only business day left before tile is Friday Sep 18. If that inspection slips to Monday, Sean is standing on the balcony on tile day with nothing to do &mdash; or worse, tiles over uninspected waterproofing.</p>
+      <span class="fix"><b>Do this</b>Book the Friday Sep 18 slot online on Wednesday Sep 16, before the work is even finished &mdash; you can always cancel. Treat Sep 18 as the hinge of the whole schedule. If waterproofing isn&rsquo;t done by Thursday night, call Sean Thursday and move tile rather than letting him show up.</span>
+    </div>
+
+    <div class="risk">
+      <h3>Waterproofing has to cure, and Sean&rsquo;s materials have to be compatible with it</h3>
+      <p>Tile goes down four days after the membrane. Most deck membranes have a stated cure time and many need a water test before anything covers them; some will not accept a standard thinset without a specific primer or bond coat. Finding this out on Sep 21 costs the tile day.</p>
+      <span class="fix"><b>Do this</b>This week, get the membrane product name and data sheet from Gerardo and send it to Sean. Ask Sean one question: &ldquo;can you set over this on Sep 21, and what do you need under it?&rdquo; Also confirm with Gerardo that slope to the drain is corrected before the membrane goes down &mdash; after tile, drainage is permanent.</span>
+    </div>
+
+    <div class="risk">
+      <h3>The stair weekend has no backup of any kind</h3>
+      <p>Jose works Saturday Sep 19 and Sunday Sep 20. No inspector, no city staff, no lumber yard help, no supply house. If he opens up the stair and finds rot at the ledger or a bad connection at the upper unit, the job stops until Monday &mdash; and Monday is tile day.</p>
+      <span class="fix"><b>Do this</b>Check the permit record this week for whether the staircase carries its own framing or connection inspection, and whether that has to happen before the stair is finished. If it does, the weekend dates don&rsquo;t work and the stair moves to a weekday. Either way, be reachable both days and have Jose send photos the moment anything is opened up.</span>
+    </div>
+
+    <div class="risk">
+      <h3>The upper unit loses its stairs for two days</h3>
+      <p>That staircase is the access to the upper unit. During Sep 19&ndash;20 whoever is up there can&rsquo;t reasonably use it, and there may be nothing else to fall back on.</p>
+      <span class="fix"><b>Do this</b>Have Brenda confirm this week whether the upper unit is occupied that weekend, and notify anyone affected now rather than the day before. Ask Jose directly: at end of day Saturday, is there a safe way up and down? If the answer is no, that has to be arranged around &mdash; it is the item most likely to become a problem with people rather than with the building.</span>
+    </div>
+
+    <div class="risk">
+      <h3>The stair is the only place to absorb a slip</h3>
+      <p>Demo, sill, doors, waterproofing and tile are one unbroken chain, each waiting on the one before it. The staircase is the single task that touches none of them.</p>
+      <span class="fix"><b>Do this</b>If something slips, move Jose, not the balcony chain. He is the only trade you can reschedule without losing the tile date. Say this to him up front so a change isn&rsquo;t a surprise.</span>
+    </div>
+
+    <div class="risk">
+      <h3>Decisions have to be made on site, same day</h3>
+      <p>Nicole is in Portugal, eight hours ahead of Newport. When the crews are working it is late evening or the middle of the night there. A question that waits for her answer loses a day, and there is no day to lose.</p>
+      <span class="fix"><b>Do this</b>Baiju decides on site. Anything that genuinely needs Nicole &mdash; a real design call, not a field question &mdash; gets queued and asked before 9am Newport time, which is her late afternoon. Tell all four contractors up front that Baiju is the only decision-maker for the duration, so nobody waits on an architect who isn&rsquo;t reachable.</span>
+    </div>
+
+  </div>
+</section>
+
+<section id="log">
+  <div class="shead"><h2>Progress log</h2><span class="n" id="log-n">&mdash;</span></div>
+  <p class="lede">Newest first. Updated by Baiju as work is completed and inspections are signed off.</p>
+  <div class="log" id="logbody"></div>
+  <div class="composer">
+    <textarea id="logtext" placeholder="What happened, and what it means for the next trade. Example: Waterproofing inspection passed Friday morning. Sean is clear for Monday."></textarea>
+    <button class="btn" id="logadd" type="button">Add entry</button>
+  </div>
+</section>
+
+<footer>
+  <p><b>Questions on the schedule, the permit, or anything on site:</b> Baiju, <a class="mono" href="tel:+17147466544">714-746-6544</a>.</p>
+  <p>Nicole (architect) is traveling in Portugal through this window and is not managing the project on site.</p>
+  <p id="stamp" class="mono"></p>
+</footer>
+
+</div>
+
+<div class="savebar" id="savebar">
+  <span class="msg" id="savemsg">Unpublished changes</span>
+  <button class="btn ghost" id="discard" type="button">Discard</button>
+  <button class="btn" id="publish" type="button">Publish updates</button>
+</div>
+
+<script id="state" type="application/json">{"status":{},"prep":{},"log":[{"d":"Sep 6","t":"Schedule and contacts published. Everyone has the same dates, the same scope, and the same three inspection holds. Read the item under your name before your first day."}]}</script>
+
+<script>
+(function(){
+  "use strict";
+  var PRISTINE = "<!doctype html>\n" + document.documentElement.outerHTML;
+
+  var PHASES = [
+    { id:"a-call1", kind:"action", track:"main", when:"Wed Sep 9 – Thu Sep 10", who:["Baiju"],
+      title:"Book the post-demo inspection online",
+      body:"Schedule the first inspection through the city portal for the first business day after demo, and confirm the waterproofing materials and the sliding doors are physically on site.",
+      flag:"See watch list 01 — this gets much easier if demo moves to Thursday Sep 10." },
+
+    { id:"w-demo", kind:"work", track:"main", when:"Fri Sep 11", who:["Gerardo"],
+      title:"Demo the balcony waterproofing",
+      body:"Tear out the existing waterproofing down to substrate. Leave the deck swept and the drain and scupper exposed so the inspector can see them. Debris hauled the same day — nothing sits on the deck over the weekend." },
+
+    { id:"g-1", kind:"gate", track:"main", when:"Mon Sep 14, first thing", who:[],
+      title:"Inspection 1 — open substrate",
+      body:"The deck stays open and untouched until this is signed off. No sill work starts before the inspector has been and gone.",
+      flag:"Currently sharing Monday with the sill and door install. Move the demo to Thu Sep 10 and this conflict disappears." },
+
+    { id:"w-sill", kind:"work", track:"main", when:"Mon Sep 14", who:["Gerardo","Urias"],
+      title:"Door sill and pan, then sliding doors",
+      body:"Gerardo builds the sill and sets the pan flashing at first light. Urias installs the sliding doors into it the same day, midday onward. Two trades on one day with a hard handoff — the sill detail has to be agreed between them before this morning, not during it.",
+      flag:"The tightest day on the job. See watch list 02." },
+
+    { id:"w-wp", kind:"work", track:"main", when:"Tue Sep 15 – Thu Sep 17", who:["Gerardo"],
+      title:"Balcony waterproofing",
+      body:"Membrane goes down once the doors are in, lapped into the door pan and turned up at the walls. Confirm slope to the drain is corrected before anything is applied — after tile it is permanent. Note the product name and cure time; Sean needs both." },
+
+    { id:"g-2", kind:"gate", track:"main", when:"Fri Sep 18", who:[],
+      title:"Inspection 2 — waterproofing before cover",
+      body:"Membrane, turn-ups and the door pan all visible. Nothing goes over this until it is signed off. This is the last business day before tile.",
+      flag:"Book it Wed Sep 16, before the work is finished. If this slips, tile slips. See watch list 03." },
+
+    { id:"w-stair", kind:"work", track:"par", when:"Sat Sep 19 – Sun Sep 20", who:["Jose"],
+      title:"Replace the staircase to the upper unit",
+      body:"Independent of the balcony work — it can move without affecting tile, and it is the only task on the job that can. Weekend dates mean no inspector and no supply house, so anything found on opening up waits until Monday. Photograph the existing connections before demo and send them the same hour." },
+
+    { id:"w-tile", kind:"work", track:"main", when:"Mon Sep 21", who:["Sean"],
+      title:"Tile the balcony",
+      body:"Only starts if Inspection 2 has passed. Setting materials must be compatible with Gerardo’s membrane and its cure time — confirm that in the week before, not on the morning." },
+
+    { id:"g-3", kind:"gate", track:"main", when:"After tile", who:["Baiju"],
+      title:"Inspection 3 — final sign-off",
+      body:"Booked once tile is set and grouted. Closes out the permit." }
+  ];
+
+  var PEOPLE = [
+    { nm:"Gerardo", role:"Demo · Waterproofing · Sill", tel:"213-521-1170", pm:false, does:[
+      "Demo the existing balcony waterproofing (Sep 11)",
+      "Build the door sill and pan flashing (Sep 14, morning)",
+      "Balcony waterproofing after the doors are in (Sep 15–17)",
+      "Correct slope to the drain before the membrane goes down",
+      "Give Baiju the membrane product name and cure time — Sean needs it" ]},
+    { nm:"Urias", role:"Sliding doors", tel:"714-733-0059", pm:false, does:[
+      "Install the sliding doors (Sep 14, midday onward)",
+      "Doors on site and inspected for damage before Sep 14",
+      "Agree the sill height and pan detail with Gerardo in advance",
+      "Confirm the rough opening against the actual doors, not the order" ]},
+    { nm:"Sean", role:"Tile", tel:"951-852-7152", pm:false, does:[
+      "Tile the balcony (Sep 21) — only after Inspection 2 passes",
+      "Confirm your setting materials work over Gerardo’s membrane",
+      "Tile and setting materials on site before Sep 21, same lot, with overage",
+      "Expect a call Thursday Sep 17 confirming the date is still good" ]},
+    { nm:"Jose", role:"Staircase", tel:"714-341-0713", pm:false, does:[
+      "Replace the staircase to the upper unit (Sep 19–20)",
+      "Off the critical path — this is the one date that can move if needed",
+      "Photograph existing connections before demo and send them same day",
+      "Confirm there is safe access up and down at the end of Saturday" ]},
+    { nm:"Brenda", role:"Property manager", tel:"714-809-0734", pm:true, does:[
+      "Confirm whether the upper unit is occupied over Sep 19–20",
+      "Notify anyone affected by the stair being out, in advance",
+      "Site access, keys and parking for four trades",
+      "First call if there is a problem on site and Baiju isn’t reachable" ]},
+    { nm:"Baiju", role:"Owner · Decisions", tel:"714-746-6544", pm:true, does:[
+      "Books all three inspections online — nobody else schedules them",
+      "Sole decision-maker on site for the whole window",
+      "Updates this page as work and inspections are signed off",
+      "Reachable during working hours for anything that would otherwise stop work" ]}
+  ];
+
+  var PREP = [
+    { id:"p-doors", who:"Urias", t:"<b>Sliding doors physically on site, unwrapped and inspected</b> before Sep 14. A damaged panel or a wrong size found on install day stops the doors, the waterproofing behind them, and the tile." },
+    { id:"p-ro", who:"Urias + Gerardo", t:"<b>Rough opening measured against the actual doors</b> — not the order sheet — before Gerardo builds the sill." },
+    { id:"p-sill", who:"Gerardo + Urias", t:"<b>Sill height and pan flashing detail agreed between the two of them</b>, by phone, before Sep 11. Include how the membrane laps into the pan." },
+    { id:"p-wpmat", who:"Gerardo", t:"<b>Waterproofing materials on site before Sep 11</b>, and the product data sheet sent to Baiju so it can go to Sean." },
+    { id:"p-compat", who:"Sean", t:"<b>Confirm the setting system works over Gerardo’s membrane</b>, including required cure time and any primer or bond coat. Answer needed this week, not on Sep 21." },
+    { id:"p-tile", who:"Sean", t:"<b>Tile and setting materials on site before Sep 21</b> — full quantity plus overage, same lot or batch." },
+    { id:"p-stairmat", who:"Jose", t:"<b>Stair materials and any fabricated parts on site before Sep 19.</b> Nothing is open on the weekend if something is short." },
+    { id:"p-stairinsp", who:"Baiju", t:"<b>Check whether the staircase carries its own inspection</b>, and whether it has to happen before the stair is finished. If it does, the weekend dates do not work." },
+    { id:"p-permit", who:"Baiju", t:"<b>Permit card posted and approved plans on site</b> from Sep 10 onward, and accessible for every inspection." },
+    { id:"p-drain", who:"Gerardo", t:"<b>Confirm the balcony drain and scupper detail</b> and whether either needs rework. Once tile is down, drainage is permanent." },
+    { id:"p-debris", who:"Baiju", t:"<b>Debris haul-off arranged for Sep 11 and Sep 19.</b> Two demo days, two loads." },
+    { id:"p-park", who:"Brenda", t:"<b>Parking and staging plan for the peninsula.</b> Street parking on 46th is tight, and four trades across eleven days need somewhere to put a truck and a pallet of tile." },
+    { id:"p-access", who:"Brenda", t:"<b>Site access, keys or lockbox code, water and power</b> confirmed with all four contractors." },
+    { id:"p-upper", who:"Brenda", t:"<b>Upper unit occupancy over Sep 19–20 confirmed and anyone affected notified</b> — this week, not the day before." }
+  ];
+
+  var $ = function(s){ return document.querySelector(s); };
+  var esc = function(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); };
+  var tel = function(t){ return "+1" + t.replace(/\D/g,""); };
+
+  var state;
+  try { state = JSON.parse($("#state").textContent) || {}; } catch(e){ state = {}; }
+  state.status = state.status || {};
+  state.prep   = state.prep   || {};
+  state.log    = state.log    || [];
+
+  var baseline = JSON.stringify(state);
+  var editing = false, artifactApi = null, publishing = false;
+
+  var LABEL = { todo:"To do", active:"In progress", done:"Done" };
+  function st(id){ return state.status[id] || "todo"; }
+
+  function drawTimeline(){
+    $("#timeline").innerHTML = PHASES.map(function(p){
+      var s = st(p.id);
+      var cls = "node" + (p.kind === "gate" ? " gate" : "") + (p.track === "par" ? " par" : "");
+      var badge = p.kind === "gate"
+        ? '<span class="stamp">Inspection hold</span>'
+        : (p.track === "par" ? '<span class="offpath">Off critical path</span>' : "");
+      var owners = p.who.map(function(w){
+        var per = PEOPLE.filter(function(x){ return x.nm === w; })[0];
+        return per ? '<a class="who" href="tel:' + tel(per.tel) + '">' + esc(w) + '</a>'
+                   : '<span class="who">' + esc(w) + '</span>';
+      }).join("");
+      return '<div class="' + cls + '" data-st="' + s + '" data-id="' + p.id + '">'
+        + (p.track === "par" ? '<span class="par-tag"></span>' : "")
+        + '<div class="card">'
+        + badge
+        + '<div class="when">' + esc(p.when) + '</div>'
+        + '<h3>' + esc(p.title) + '</h3>'
+        + '<p>' + esc(p.body) + '</p>'
+        + (owners ? '<div class="owners">' + owners + '</div>' : "")
+        + (p.flag ? '<span class="flag">' + esc(p.flag) + '</span>' : "")
+        + '<div class="seg" role="group" aria-label="Status">'
+        + ["todo","active","done"].map(function(k){
+            return '<button type="button" data-set="' + k + '" aria-pressed="' + (s === k) + '">' + LABEL[k] + '</button>';
+          }).join("")
+        + '</div></div></div>';
+    }).join("");
+  }
+
+  function drawPeople(){
+    $("#people").innerHTML = PEOPLE.map(function(p){
+      return '<div class="person' + (p.pm ? " pm" : "") + '">'
+        + '<div class="nm">' + esc(p.nm) + '</div>'
+        + '<div class="role">' + esc(p.role) + '</div>'
+        + '<ul>' + p.does.map(function(d){ return "<li>" + esc(d) + "</li>"; }).join("") + '</ul>'
+        + '<a class="tel" href="tel:' + tel(p.tel) + '">' + esc(p.tel) + '<span>Call</span></a>'
+        + '</div>';
+    }).join("");
+  }
+
+  function drawPrep(){
+    $("#prep").innerHTML = PREP.map(function(p){
+      var on = !!state.prep[p.id];
+      return '<li class="' + (on ? "on" : "") + '" data-id="' + p.id + '">'
+        + '<button class="box" type="button" aria-pressed="' + on + '" aria-label="Mark confirmed"></button>'
+        + '<span class="txt">' + p.t + '<span class="tag">' + esc(p.who) + '</span></span></li>';
+    }).join("");
+    var done = PREP.filter(function(p){ return state.prep[p.id]; }).length;
+    $("#prep-n").textContent = done + " of " + PREP.length + " confirmed";
+  }
+
+  function drawLog(){
+    $("#logbody").innerHTML = state.log.length
+      ? state.log.map(function(e){
+          return '<div class="entry"><span class="d">' + esc(e.d) + '</span><span class="t">' + esc(e.t) + '</span></div>';
+        }).join("")
+      : '<div class="entry"><span class="t">No updates yet.</span></div>';
+    $("#log-n").textContent = state.log.length + (state.log.length === 1 ? " entry" : " entries");
+  }
+
+  function drawStrip(){
+    var next = PHASES.filter(function(p){ return st(p.id) !== "done"; })[0];
+    $("#s-next").textContent = next ? next.when.replace(/, first thing/, "") : "Complete";
+    $("#s-next-sub").textContent = next ? next.title : "All work signed off";
+    var work = PHASES.filter(function(p){ return p.kind !== "action"; });
+    var done = work.filter(function(p){ return st(p.id) === "done"; }).length;
+    $("#s-prog").textContent = done + " / " + work.length;
+    $("#s-prog-sub").textContent = "stages complete";
+    $("#stamp").textContent = "Last updated " + (state.log[0] ? state.log[0].d : "Sep 6") + " · 2026";
+  }
+
+  function drawAll(){ drawTimeline(); drawPrep(); drawLog(); drawStrip(); }
+
+  function dirty(){ return JSON.stringify(state) !== baseline; }
+  function syncBar(){
+    var d = dirty();
+    $("#savebar").classList.toggle("show", editing && d);
+    if (d) {
+      $("#savemsg").textContent = artifactApi
+        ? "Changes are on your screen only. Publish so everyone sees them."
+        : "Changes are on your screen only — publishing isn’t available in this view.";
+      $("#publish").disabled = !artifactApi || publishing;
+    }
+  }
+
+  $("#timeline").addEventListener("click", function(ev){
+    var b = ev.target.closest("button[data-set]");
+    if (!b || !editing) return;
+    state.status[b.closest(".node").dataset.id] = b.dataset.set;
+    drawTimeline(); drawStrip(); syncBar();
+  });
+
+  $("#prep").addEventListener("click", function(ev){
+    var b = ev.target.closest(".box");
+    if (!b || !editing) return;
+    var id = b.closest("li").dataset.id;
+    if (state.prep[id]) { delete state.prep[id]; } else { state.prep[id] = true; }
+    drawPrep(); syncBar();
+  });
+
+  $("#logadd").addEventListener("click", function(){
+    var ta = $("#logtext"), t = ta.value.trim();
+    if (!t) { ta.focus(); return; }
+    var d = new Date().toLocaleDateString("en-US", { month:"short", day:"numeric" });
+    state.log.unshift({ d:d, t:t });
+    ta.value = "";
+    drawLog(); drawStrip(); syncBar();
+  });
+
+  $("#modebtn").addEventListener("click", function(){
+    editing = !editing;
+    document.body.classList.toggle("editing", editing);
+    this.textContent = editing ? "Done editing" : "Owner: update progress";
+    this.classList.toggle("ghost", !editing);
+    $("#modenote").textContent = editing
+      ? "Set a status, tick off prep items, add a log entry — then publish."
+      : "Everyone else: read-only. Check back for the latest.";
+    syncBar();
+  });
+
+  $("#discard").addEventListener("click", function(){
+    state = JSON.parse(baseline);
+    drawAll(); syncBar();
+  });
+
+  $("#publish").addEventListener("click", function(){
+    if (!artifactApi || publishing) return;
+    publishing = true;
+    $("#publish").disabled = true;
+    $("#savemsg").textContent = "Publishing…";
+    var next = PRISTINE.replace(
+      /<script id="state" type="application\/json">[\s\S]*?<\/script>/,
+      '<script id="state" type="application/json">' + JSON.stringify(state) + '<\/script>'
+    );
+    artifactApi.publish(next).then(function(){
+      $("#savemsg").textContent = "Published.";
+    })["catch"](function(err){
+      publishing = false;
+      var code = (err && err.code) || "";
+      $("#publish").disabled = false;
+      if (code === "conflict") {
+        $("#savemsg").textContent = "Someone else published first — reloading to their version.";
+      } else if (code === "not_writer" || code === "not_granted") {
+        $("#savemsg").textContent = "You have view-only access to this page, so it can’t be updated from here.";
+      } else {
+        $("#savemsg").textContent = "Couldn’t publish. Check your connection and try again.";
+      }
+    });
+  });
+
+  drawPeople();
+  drawAll();
+
+  if (window.claude && window.claude.use) {
+    window.claude.use("artifact").then(function(api){
+      artifactApi = api || null;
+      syncBar();
+    })["catch"](function(){ artifactApi = null; syncBar(); });
+  }
+})();
+</script>
