@@ -210,6 +210,7 @@ footer p+p{margin-top:.4rem}
   <h1>46th Street Balcony Rebuild</h1>
   <a class="addr" href="https://maps.google.com/?q=128+46th+Street,+Newport+Beach,+CA">128 46th Street, Newport Beach, CA &nearr;</a>
   <p class="blurb">Balcony waterproofing tear-out and rebuild, new sliding doors, new balcony tile, and a replacement staircase to the upper unit. Four trades, eleven days, one permit. This page is the single schedule everyone works from, and it gets updated as work is signed off.</p>
+  <p class="blurb"><b>The property is a duplex.</b> The upper unit is vacant through Sep 30, so nobody is displaced by the stair work. The lower unit may have someone in it from Sep 21 &mdash; tile day. Work accordingly.</p>
   <nav class="jump">
     <a href="#schedule">Schedule</a>
     <a href="#crew">Who does what</a>
@@ -287,6 +288,12 @@ footer p+p{margin-top:.4rem}
       <span class="fix"><b>Do this</b>Book the Friday Sep 18 slot online on Wednesday Sep 16, before the work is even finished &mdash; you can always cancel. Treat Sep 18 as the hinge of the whole schedule. If waterproofing isn&rsquo;t done by Thursday night, call Sean Thursday and move tile rather than letting him show up.</span>
     </div>
 
+    <div class="risk hot">
+      <h3>Someone may be staying in the lower unit on tile day</h3>
+      <p>The upper unit is vacant through Sep 30, so the staircase work has no occupancy problem at all. The lower unit is the opposite: there may be a guest in it from Sep 21, which is tile day. Sean will be running a wet saw &mdash; water, dust, noise, and a truck taking the parking &mdash; directly above and around an occupied unit. And if tile slips even one day, it lands further into their stay rather than clearing it.</p>
+      <span class="fix"><b>Do this</b>Brenda is already speaking to them. What you need back is the <b>arrival date and time</b>, not just a yes or no. Then consider moving tile to Sat Sep 19 or Sun Sep 20 instead &mdash; Inspection 2 is Friday the 18th, the upper unit is empty, and finishing tile before anyone arrives removes the conflict completely. Ask Sean this week whether he works weekends.</span>
+    </div>
+
     <div class="risk">
       <h3>Waterproofing has to cure, and Sean&rsquo;s materials have to be compatible with it</h3>
       <p>Tile goes down four days after the membrane. Most deck membranes have a stated cure time and many need a water test before anything covers them; some will not accept a standard thinset without a specific primer or bond coat. Finding this out on Sep 21 costs the tile day.</p>
@@ -296,13 +303,7 @@ footer p+p{margin-top:.4rem}
     <div class="risk">
       <h3>The stair weekend has no backup of any kind</h3>
       <p>Jose works Saturday Sep 19 and Sunday Sep 20. No inspector, no city staff, no lumber yard help, no supply house. If he opens up the stair and finds rot at the ledger or a bad connection at the upper unit, the job stops until Monday &mdash; and Monday is tile day.</p>
-      <span class="fix"><b>Do this</b>Check the permit record this week for whether the staircase carries its own framing or connection inspection, and whether that has to happen before the stair is finished. If it does, the weekend dates don&rsquo;t work and the stair moves to a weekday. Either way, be reachable both days and have Jose send photos the moment anything is opened up.</span>
-    </div>
-
-    <div class="risk">
-      <h3>The upper unit loses its stairs for two days</h3>
-      <p>That staircase is the access to the upper unit. During Sep 19&ndash;20 whoever is up there can&rsquo;t reasonably use it, and there may be nothing else to fall back on.</p>
-      <span class="fix"><b>Do this</b>Have Brenda confirm this week whether the upper unit is occupied that weekend, and notify anyone affected now rather than the day before. Ask Jose directly: at end of day Saturday, is there a safe way up and down? If the answer is no, that has to be arranged around &mdash; it is the item most likely to become a problem with people rather than with the building.</span>
+      <span class="fix"><b>Do this</b>Check the permit record this week for whether the staircase carries its own framing or connection inspection. And note that with the upper unit vacant through Sep 30 there is <b>no access pressure holding Jose to that weekend</b> &mdash; moving him to a weekday costs you nothing and buys back an inspector, a supply house and city staff. That is the cheapest schedule improvement on this page. Either way, have Jose send photos the moment anything is opened up.</span>
     </div>
 
     <div class="risk">
@@ -382,11 +383,13 @@ footer p+p{margin-top:.4rem}
 
     { id:"w-stair", kind:"work", track:"par", when:"Sat Sep 19 – Sun Sep 20", who:["Jose"],
       title:"Replace the staircase to the upper unit",
-      body:"Independent of the balcony work — it can move without affecting tile, and it is the only task on the job that can. Weekend dates mean no inspector and no supply house, so anything found on opening up waits until Monday. Photograph the existing connections before demo and send them the same hour." },
+      body:"Independent of the balcony work — it can move without affecting tile, and it is the only task on the job that can. Weekend dates mean no inspector and no supply house, so anything found on opening up waits until Monday. Photograph the existing connections before demo and send them the same hour.",
+      flag:"Upper unit is vacant through Sep 30, so nothing forces these weekend dates. Moving to a weekday is free. See watch list 06." },
 
     { id:"w-tile", kind:"work", track:"main", when:"Mon Sep 21", who:["Sean"],
       title:"Tile the balcony",
-      body:"Only starts if Inspection 2 has passed. Setting materials must be compatible with Gerardo’s membrane and its cure time — confirm that in the week before, not on the morning." },
+      body:"Only starts if Inspection 2 has passed. Setting materials must be compatible with Gerardo’s membrane and its cure time — confirm that in the week before, not on the morning.",
+      flag:"Someone may be staying in the lower unit from this date. Brenda is confirming the arrival time. Moving tile to Sat Sep 19 or Sun Sep 20 would clear it — see watch list 04." },
 
     { id:"g-3", kind:"gate", track:"main", when:"After tile", who:["Baiju"],
       title:"Inspection 3 — final sign-off",
@@ -441,7 +444,7 @@ footer p+p{margin-top:.4rem}
     { id:"p-debris", who:"Baiju", t:"<b>Debris haul-off arranged for Sep 11 and Sep 19.</b> Two demo days, two loads." },
     { id:"p-park", who:"Brenda", t:"<b>Parking and staging plan for the peninsula.</b> Street parking on 46th is tight, and four trades across eleven days need somewhere to put a truck and a pallet of tile." },
     { id:"p-access", who:"Brenda", t:"<b>Site access, keys or lockbox code, water and power</b> confirmed with all four contractors." },
-    { id:"p-upper", who:"Brenda", t:"<b>Upper unit occupancy over Sep 19–20 confirmed and anyone affected notified</b> — this week, not the day before." }
+    { id:"p-lower", who:"Brenda", t:"<b>Confirm whether anyone is staying in the lower unit from Sep 21, and get the exact arrival date and time.</b> Tile day runs a wet saw over an occupied unit. The upper unit is vacant through Sep 30, so the stair work has no occupancy constraint at all." }
   ];
 
   var $ = function(s){ return document.querySelector(s); };
